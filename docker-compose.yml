@@ -1,0 +1,35 @@
+version: "3.6"
+services:
+  application:
+    build:
+      context: "."
+      dockerfile: Dockerfile
+    container_name: gamestore
+    ports:
+      - 8080:8080
+    volumes:
+      - "./:/app"
+      - "${HOME}/.m2:/root/.m2"
+    depends_on:
+      - mongodb
+    working_dir: /app
+    stdin_open: true
+    tty: true
+
+  mongodb:
+    hostname: mongodb
+    container_name: mongodb
+    image: mongo:4.0
+    ports:
+      - 27017:27017
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    command: mongod --bind_ip_all --auth
+    volumes:
+      - ./.data/mongodb:/data/db
+
+networks:
+  gamestore:
+    external: true
