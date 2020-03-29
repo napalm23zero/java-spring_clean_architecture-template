@@ -2,7 +2,7 @@
 
 This is a simple functional project that I've created to be used as a template and a reference when creating new projects. It is very important to keep in mind that my goal is to build a well-structured architecture, with significant tests and to use good practices.
 
-Read this in other languages: [English](README.md), [Portugês](README.pt-br.md)
+Read this in other languages: [Portugês](README.pt-br.md)
 
 ## Multi Modular
 
@@ -19,11 +19,11 @@ You can see that on `./pom.xml` that we include spring-boot starter dependencies
 A good tip here is the commands that should be runned targeting to main project and the ones that should be directed to each specific module. For example, running the following commands at the root of the project:
 
 ```bash
-#shoud clean and install all projects
+# shoud clean and install all projects dependencies
 ./mvnw clean install
 ```
 
 ```bash
-#shoud run tests only for infrastructure module
+# shoud run tests only for infrastructure module
 ./mvnw test -pl infrastructure
 ```
